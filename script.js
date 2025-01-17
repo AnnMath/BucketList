@@ -1,7 +1,3 @@
-import JSConfetti from 'js-confetti'
-
-const jsConfetti = new JSConfetti()
-
 document.addEventListener('DOMContentLoaded', () => {
   const activityArray = JSON.parse(localStorage.getItem('activities')) || []
   showTasks(activityArray)
@@ -66,7 +62,6 @@ const showTasks = (activityArray) => {
       btnDone.classList.add('btn-done')
       btnDone.addEventListener('click', () => {
         handleTaskDone(activity)
-        jsConfetti.addConfetti()
       })
 
       if (done) {
