@@ -1,0 +1,80 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  font-family: 'Ubuntu', serif;
+  background-color: oklch(90.23% 0.0732 334.56);
+  width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+  font-family: 'Lobster', serif;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.title {
+  font-family: 'Lobster', serif;
+  font-size: 5em;
+  text-align: center;
+  width: 50%;
+  margin-inline: auto;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.task-desc {
+  margin-inline-end: 1rem;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+li {
+  list-style-type: none;
+}
+
+.task-completed {
+  text-decoration: line-through;
+  color: oklch(60% 0.0173 299);
+}
+
+.btn-done,
+.btn-delete {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+
+  &:hover {
+    background-color: oklch(83.53% 0.0937 320.82);
+    border-radius: 5px;
+  }
+}
