@@ -69,9 +69,17 @@ const showTasks = (activityArray) => {
         handleTaskDone(activity)
       })
 
+      const btnEdit = document.createElement('button')
+      btnEdit.textContent = '✏️'
+      btnEdit.classList.add('btn-edit')
+      btnEdit.addEventListener('click', () => {
+        editActivity(activity)
+      })
+
       if (done) {
         taskDesc.classList.add('task-completed')
         btnDone.disabled = true
+        btnEdit.disabled = true
       }
 
       const btnDelete = document.createElement('button')
@@ -84,6 +92,7 @@ const showTasks = (activityArray) => {
       listItem.appendChild(taskDesc)
       listItem.appendChild(btnDone)
       listItem.appendChild(btnDelete)
+      listItem.appendChild(btnEdit)
       categoryList.appendChild(listItem)
     })
 
@@ -128,4 +137,33 @@ const handleTaskDone = (activityName) => {
 
   localStorage.setItem('activities', JSON.stringify(activityArray))
   showTasks(activityArray)
+}
+
+const editActivity = (activity) => {
+  const activityArray = JSON.parse(localStorage.getItem('activities')) || []
+  const activityToEdit = activityArray.find(
+    (item) => item.activity === activity
+  )
+
+  const dialog = document.querySelector('dialog')
+  dialog.showModal()
+
+  const dialogText = document.querySelector('#dialog-desc')
+  dialogText.textContent = `Edit activity: ${activity}?`
+
+  const cancelButton = document.querySelector('#dialog-cancel')
+  cancelButton.addEventListener('click', () => {
+    dialog.close()
+  })
+
+  const editedActivity = document.querySelector('#dialog-edit')
+
+  const editButton = document.querySelector('#dialog-ok')
+  editButton.addEventListener('click', () => {
+    activityToEdit.activity = editedActivity.value
+    localStorage.setItem('activities', JSON.stringify(activityArray))
+    editedActivity.textContent = ''
+    dialog.close()
+    showTasks(activityArray)
+  })
 }

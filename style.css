@@ -68,7 +68,8 @@ li {
 }
 
 .btn-done,
-.btn-delete {
+.btn-delete,
+.btn-edit {
   background: none;
   border: none;
   font-size: 1.5em;
