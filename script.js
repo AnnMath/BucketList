@@ -12,7 +12,7 @@ const addTask = (e) => {
 
   const activityArray = JSON.parse(localStorage.getItem('activities')) || []
 
-  const activityName = document.querySelector('#activityName').value
+  const activityName = document.querySelector('#activityName').value.trim()
   const activityCategory = document.querySelector('#activityCategory').value
 
   activityArray.push({
@@ -44,7 +44,7 @@ const showTasks = (activityArray) => {
   )
 
   for (const category in groupedActivities) {
-    let categoryContainer = document.createElement('div')
+    const categoryContainer = document.createElement('div')
     categoryContainer.id = `category-container-${category}`
     categoryContainer.classList.add('category')
 
@@ -53,6 +53,13 @@ const showTasks = (activityArray) => {
 
     const categoryList = document.createElement('ul')
     categoryList.id = `list-${category}`
+
+    const sortButton = document.createElement('button')
+    sortButton.id = `sort-button-${category}`
+    sortButton.textContent = 'Sort A-Z'
+    sortButton.addEventListener('click', () => {
+      sortActivities(category, groupedActivities)
+    })
 
     groupedActivities[category].forEach(({ activity, done }) => {
       const listItem = document.createElement('li')
@@ -97,6 +104,7 @@ const showTasks = (activityArray) => {
     })
 
     categoryContainer.appendChild(categoryTitle)
+    categoryContainer.appendChild(sortButton)
     categoryContainer.appendChild(categoryList)
     bucketLists.appendChild(categoryContainer)
   }
@@ -166,4 +174,25 @@ const editActivity = (activity) => {
     dialog.close()
     showTasks(activityArray)
   })
+}
+
+const sortActivities = (category, groupedActivities) => {
+  const sortedActivities = [...groupedActivities[category]].sort((a, b) => {
+    return a.activity.localeCompare(b.activity)
+  })
+
+  groupedActivities[category] = sortedActivities
+
+  const updatedActivities = Object.entries(groupedActivities).flatMap(
+    ([key, activities]) => {
+      return activities.map(({ activity, done }) => ({
+        activity,
+        category: key,
+        done,
+      }))
+    }
+  )
+
+  localStorage.setItem('activities', JSON.stringify(updatedActivities))
+  showTasks(updatedActivities)
 }
