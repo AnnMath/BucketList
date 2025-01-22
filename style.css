@@ -4,11 +4,26 @@
   box-sizing: border-box;
 }
 
+:root {
+  --light-beige: oklch(97.15% 0.02419 77.46334);
+  --vanilla: oklch(92.74% 0.0877 97.21);
+  --cyan: oklch(91.18% 0.0962 195.88);
+  --rose: oklch(81.18% 0.1431 347.62916000802704);
+  --salmon: oklch(85.59% 0.0765 8.39);
+  --salmon-dark: oklch(79.67% 0.0765 8.39);
+  --teal: oklch(80.79% 0.1088 217.88);
+  --teal-dark: oklch(74.97% 0.1088 217.88);
+  --gray: oklch(57.65% 0.0271 217.88);
+
+  --input-padding: 0.5rem;
+  --input-border-radius: 10px;
+}
+
 body {
   min-height: 100vh;
   line-height: 1.5;
   font-family: 'Ubuntu', serif;
-  background-color: oklch(90.23% 0.0732 334.56);
+  background-color: var(--light-beige);
   width: 100%;
 }
 
@@ -48,8 +63,37 @@ main {
   align-items: center;
 }
 
+button:hover {
+  background-color: var(--teal-dark);
+}
+
+#activityName {
+  width: 15rem;
+  padding: var(--input-padding);
+  border-radius: var(--input-border-radius);
+  border: none;
+  margin-inline-end: 0.5rem;
+}
+
+#activityCategory,
+#add-button {
+  padding: var(--input-padding);
+  border-radius: var(--input-border-radius);
+  border: none;
+}
+
+#add-button {
+  background-color: var(--teal);
+  margin-inline-start: 0.5rem;
+  &:hover {
+    background-color: var(--teal-dark);
+  }
+}
+
 .task-desc {
   margin-inline-end: 1rem;
+  font-family: 'Caveat', serif;
+  font-size: 1.5rem;
 }
 
 ul {
@@ -62,9 +106,100 @@ li {
   list-style-type: none;
 }
 
+#bucketLists {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.category {
+  padding-inline: 1rem;
+  margin-block-start: 3rem;
+  box-shadow: 0px 10px 5px -1px rgba(204, 200, 204, 1);
+  position: relative;
+}
+
+.category::before {
+  content: '';
+  height: 40px;
+  width: 100px;
+  position: absolute;
+  top: -20px;
+  left: 100px;
+  background: linear-gradient(
+    104deg,
+    rgba(217, 186, 97, 0.4) 79%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  transform: rotate(139deg);
+}
+
+#category-container-travel {
+  background-color: var(--cyan);
+}
+#category-container-adventure {
+  background-color: var(--rose);
+}
+#category-container-learning {
+  background-color: var(--vanilla);
+}
+#category-container-hobby {
+  background-color: var(--salmon);
+}
+
 .task-completed {
   text-decoration: line-through;
-  color: oklch(60% 0.0173 299);
+  color: var(--gray);
+}
+
+.sort-button {
+  border: none;
+  border-radius: var(--input-border-radius);
+  background-color: var(--teal);
+  font-size: small;
+  padding: var(--input-padding);
+}
+
+dialog {
+  border: none;
+  padding-inline: 1.5rem;
+  border-radius: 16px;
+  background-color: var(--vanilla);
+}
+
+#dialog-title,
+#dialog-desc {
+  text-align: center;
+}
+
+#dialog-edit {
+  padding: var(--input-padding);
+  border-radius: var(--input-border-radius);
+  border: none;
+  margin-inline-end: 1rem;
+}
+
+#dialog-cancel,
+#dialog-ok {
+  border: none;
+  padding: var(--input-padding);
+  border-radius: var(--input-border-radius);
+}
+
+#dialog-cancel {
+  background-color: var(--salmon);
+  &:hover {
+    background-color: var(--salmon-dark);
+  }
+}
+
+#dialog-ok {
+  background-color: var(--teal);
+  &:hover {
+    background-color: var(--teal-dark);
+  }
 }
 
 .btn-done,

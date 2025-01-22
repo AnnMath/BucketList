@@ -56,6 +56,7 @@ const showTasks = (activityArray) => {
 
     const sortButton = document.createElement('button')
     sortButton.id = `sort-button-${category}`
+    sortButton.classList.add('sort-button')
     sortButton.textContent = 'Sort A-Z'
     sortButton.addEventListener('click', () => {
       sortActivities(category, groupedActivities)
@@ -72,7 +73,23 @@ const showTasks = (activityArray) => {
       btnDone.textContent = '✅'
       btnDone.classList.add('btn-done')
       btnDone.addEventListener('click', () => {
-        jsConfetti.addConfetti()
+        switch (category) {
+          case 'travel':
+            jsConfetti.addConfetti({ emojis: ['✈️'] })
+            break
+          case 'adventure':
+            jsConfetti.addConfetti({ emojis: ['🏝️'] })
+            break
+          case 'learning':
+            jsConfetti.addConfetti({ emojis: ['🎓'] })
+            break
+          case 'hobby':
+            jsConfetti.addConfetti({ emojis: ['🎸'] })
+            break
+          default:
+            jsConfetti.addConfetti()
+        }
+
         handleTaskDone(activity)
       })
 
@@ -157,7 +174,7 @@ const editActivity = (activity) => {
   dialog.showModal()
 
   const dialogText = document.querySelector('#dialog-desc')
-  dialogText.textContent = `Edit activity: ${activity}?`
+  dialogText.textContent = `Edit activity "${activity}"?`
 
   const cancelButton = document.querySelector('#dialog-cancel')
   cancelButton.addEventListener('click', () => {
