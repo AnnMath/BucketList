@@ -33,7 +33,7 @@ h2,
 h3,
 h4 {
   text-wrap: balance;
-  font-family: 'Lobster', serif;
+  font-family: 'Pacifico', serif;
 }
 
 img,
@@ -51,7 +51,7 @@ select {
 }
 
 .title {
-  font-family: 'Lobster', serif;
+  font-family: 'Pacifico', serif;
   font-size: 5em;
   text-align: center;
   width: 50%;
@@ -185,8 +185,10 @@ li {
 .btn-delete,
 .btn-edit {
   background: none;
-  border: none;
+  border: 1px var(--teal) solid;
+  border-radius: 5px;
   font-size: 1.5em;
+  margin-inline: 0.25rem;
 
   &:hover:not([disabled]) {
     background-color: var(--teal);
