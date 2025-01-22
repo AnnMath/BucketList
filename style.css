@@ -14,6 +14,7 @@
   --teal: oklch(80.79% 0.1088 217.88);
   --teal-dark: oklch(74.97% 0.1088 217.88);
   --gray: oklch(57.65% 0.0271 217.88);
+  --danger: oklch(52.35% 0.185 24.35);
 
   --input-padding: 0.5rem;
   --input-border-radius: 10px;
@@ -61,10 +62,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-button:hover {
-  background-color: var(--teal-dark);
 }
 
 #activityName {
@@ -119,6 +116,7 @@ li {
   margin-block-start: 3.5rem;
   box-shadow: 0px 10px 5px -1px rgba(204, 200, 204, 1);
   position: relative;
+  border-bottom-left-radius: 60px 5px;
 }
 
 .category::before {
@@ -136,17 +134,65 @@ li {
   transform: rotate(139deg);
 }
 
+.category::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  box-shadow: 2px 18px 8px 0px rgb(204 200 204 / 68%);
+  transform: rotate(351deg);
+  border-bottom-left-radius: 60px 5px;
+  z-index: -1;
+}
+
 #category-container-travel {
   background-color: var(--cyan);
+  background-image: linear-gradient(
+    233deg,
+    var(--cyan) 0%,
+    rgb(255 255 255 / 56%) 100%
+  );
 }
 #category-container-adventure {
   background-color: var(--rose);
+  background-image: linear-gradient(
+    233deg,
+    var(--rose) 0%,
+    rgb(255 255 255 / 56%) 100%
+  );
 }
 #category-container-learning {
   background-color: var(--vanilla);
+  background-image: linear-gradient(
+    233deg,
+    var(--vanilla) 0%,
+    rgb(255 255 255 / 56%) 100%
+  );
 }
 #category-container-hobby {
   background-color: var(--salmon);
+  background-image: linear-gradient(
+    233deg,
+    var(--salmon) 0%,
+    rgb(255 255 255 / 56%) 100%
+  );
+}
+
+.btn-done,
+.btn-delete,
+.btn-edit {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+
+  &:hover:not([disabled]) {
+    background-color: var(--teal);
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }
 
 .task-completed {
@@ -160,6 +206,10 @@ li {
   background-color: var(--teal);
   font-size: small;
   padding: var(--input-padding);
+
+  &:hover {
+    background-color: var(--teal-dark);
+  }
 }
 
 dialog {
@@ -202,15 +252,6 @@ dialog {
   }
 }
 
-.btn-done,
-.btn-delete,
-.btn-edit {
-  background: none;
-  border: none;
-  font-size: 1.5em;
-
-  &:hover {
-    background-color: oklch(83.53% 0.0937 320.82);
-    border-radius: 5px;
-  }
+.ph-trash {
+  color: var(--danger);
 }

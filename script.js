@@ -70,15 +70,16 @@ const showTasks = (activityArray) => {
       taskDesc.textContent = activity
 
       const btnDone = document.createElement('button')
-      btnDone.textContent = '✅'
+      btnDone.innerHTML = '<i class="ph ph-check"></i>'
       btnDone.classList.add('btn-done')
+
       btnDone.addEventListener('click', () => {
         switch (category) {
           case 'travel':
             jsConfetti.addConfetti({ emojis: ['✈️'] })
             break
           case 'adventure':
-            jsConfetti.addConfetti({ emojis: ['🏝️'] })
+            jsConfetti.addConfetti({ emojis: ['🏖️'] })
             break
           case 'learning':
             jsConfetti.addConfetti({ emojis: ['🎓'] })
@@ -94,29 +95,31 @@ const showTasks = (activityArray) => {
       })
 
       const btnEdit = document.createElement('button')
-      btnEdit.textContent = '✏️'
+      btnEdit.innerHTML = '<i class="ph ph-pencil"></i>'
       btnEdit.classList.add('btn-edit')
       btnEdit.addEventListener('click', () => {
         editActivity(activity)
       })
 
-      if (done) {
-        taskDesc.classList.add('task-completed')
-        btnDone.disabled = true
-        btnEdit.disabled = true
-      }
-
       const btnDelete = document.createElement('button')
-      btnDelete.textContent = '❌'
+
       btnDelete.classList.add('btn-delete')
+      btnDelete.innerHTML = '<i class="ph ph-trash"></i>'
       btnDelete.addEventListener('click', () => {
         deleteActivity(activity, category)
       })
 
+      if (done) {
+        taskDesc.classList.add('task-completed')
+        btnDone.disabled = true
+        btnDone.innerHTML = '<i class="ph ph-checks"></i>'
+        btnEdit.disabled = true
+      }
+
       listItem.appendChild(taskDesc)
       listItem.appendChild(btnDone)
-      listItem.appendChild(btnDelete)
       listItem.appendChild(btnEdit)
+      listItem.appendChild(btnDelete)
       categoryList.appendChild(listItem)
     })
 
