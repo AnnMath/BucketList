@@ -131,7 +131,7 @@ li {
   background: linear-gradient(
     104deg,
     rgba(217, 186, 97, 0.4) 79%,
-    rgba(255, 255, 255, 1) 100%
+    rgb(255 255 255 / 43%) 100%
   );
   transform: rotate(139deg);
 }
