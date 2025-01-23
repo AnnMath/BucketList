@@ -21,6 +21,7 @@
     </header>
     <main>
       <form id="bucketForm">
+        <label for="activityName" class="sr-only">Enter an activity</label>
         <input
           type="text"
           id="activityName"
@@ -28,7 +29,7 @@
           autocomplete="off"
           required
         />
-        <select id="activityCategory">
+        <select id="activityCategory" aria-label="Choose category">
           <optgroup label="Choose a category">
             <option value="travel">Travel</option>
             <option value="adventure">Adventure</option>
@@ -42,6 +43,7 @@
       <dialog>
         <h2 id="dialog-title">Edit</h2>
         <p id="dialog-desc"></p>
+        <label for="dialog-edit" class="sr-only">Edit activity</label>
         <input required type="text" id="dialog-edit" autocomplete="off" />
         <button id="dialog-cancel">Cancel</button>
         <button id="dialog-ok">Edit activity</button>
