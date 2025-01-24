@@ -72,7 +72,7 @@ const showTasks = (activityArray) => {
       const btnDone = document.createElement('button')
       btnDone.innerHTML = '<i class="ph ph-check"></i>'
       btnDone.classList.add('btn-done')
-      btnDone.setAttribute('aria-label', 'mark activity done')
+      btnDone.setAttribute('aria-label', `mark ${activity} as done`)
 
       btnDone.addEventListener('click', () => {
         switch (category) {
@@ -99,7 +99,7 @@ const showTasks = (activityArray) => {
       btnEdit.innerHTML = '<i class="ph ph-pencil"></i>'
       btnEdit.classList.add('btn-edit')
       btnEdit.id = 'edit-task-button'
-      btnEdit.setAttribute('aria-label', 'edit activity')
+      btnEdit.setAttribute('aria-label', `edit ${activity}`)
       btnEdit.addEventListener('click', () => {
         editActivity(activity)
       })
@@ -108,7 +108,7 @@ const showTasks = (activityArray) => {
 
       btnDelete.classList.add('btn-delete')
       btnDelete.innerHTML = '<i class="ph ph-trash"></i>'
-      btnDelete.setAttribute('aria-label', 'delete activity')
+      btnDelete.setAttribute('aria-label', `delete ${activity}`)
       btnDelete.addEventListener('click', () => {
         deleteActivity(activity, category)
       })

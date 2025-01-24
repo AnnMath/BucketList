@@ -10,9 +10,9 @@
   --cyan: oklch(91.18% 0.0962 195.88);
   --rose: oklch(81.18% 0.1431 347.62916000802704);
   --salmon: oklch(85.59% 0.0765 8.39);
-  --salmon-dark: oklch(79.67% 0.0765 8.39);
+  --salmon-dark: oklch(from var(--salmon) calc(l - 0.06) c h);
   --teal: oklch(80.79% 0.1088 217.88);
-  --teal-dark: oklch(74.97% 0.1088 217.88);
+  --teal-dark: oklch(from var(--teal) calc(l - 0.06) c h);
   --gray: oklch(57.65% 0.0271 217.88);
   --danger: oklch(52.35% 0.185 24.35);
 
@@ -229,6 +229,11 @@ dialog {
   padding-inline: 1.5rem;
   border-radius: 16px;
   background-color: var(--vanilla);
+}
+
+::backdrop {
+  backdrop-filter: blur(5px);
+  background-color: oklch(from var(--gray) calc(l - 0.5) c h / 50%);
 }
 
 #dialog-title,
