@@ -43,10 +43,12 @@
       <dialog>
         <h2 id="dialog-title">Edit</h2>
         <p id="dialog-desc"></p>
-        <label for="dialog-edit" class="sr-only">Edit activity</label>
-        <input required type="text" id="dialog-edit" autocomplete="off" />
-        <button id="dialog-cancel">Cancel</button>
-        <button id="dialog-ok">Edit activity</button>
+        <form action="" id="dialog-form" name="dialog-form">
+          <label for="dialog-edit" class="sr-only">Edit activity</label>
+          <input required type="text" id="dialog-edit" autocomplete="off" />
+          <button id="dialog-cancel">Cancel</button>
+          <button id="dialog-ok" type="submit">Edit activity</button>
+        </form>
       </dialog>
     </main>
   </body>

@@ -190,12 +190,13 @@ const editActivity = (activity) => {
 
   const editedActivity = document.querySelector('#dialog-edit')
 
-  const editButton = document.querySelector('#dialog-ok')
-  editButton.addEventListener('click', () => {
+  const dialogForm = document.querySelector('#dialog-form')
+
+  dialogForm.addEventListener('submit', () => {
     activityToEdit.activity = editedActivity.value
     localStorage.setItem('activities', JSON.stringify(activityArray))
-    editedActivity.textContent = ''
     dialog.close()
+
     showTasks(activityArray)
   })
 }
